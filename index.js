@@ -129,12 +129,80 @@
 
 // console.log(filteredarray);
 
-let a = [];
+// let a = [];
 
+// // let b = a;
+// let b = structuredClone(a);
+
+// b.push(10);
+
+// console.log(a);
+// console.log(b);
+
+// primitivity
+// let a = "string";
 // let b = a;
-let b = structuredClone(a);
+// b = "new string";
 
-b.push(10);
+// console.log(a);
+// console.log(b);
+// let a = [1];
+// a[0] = 2;
+// console.log(a[0]);
 
-console.log(a);
-console.log(b);
+// let s = "string";
+// s[0] = 'R';
+// console.log(s[0]);
+
+// let s = "I am a sentence";
+
+// let s = 'fsdkjgbhsd'
+// let s = `welcom ${username} to the world of JavaScript`;
+// let s = new String("welcome to the world of JavaScript");
+// console.log(s.slice(2));
+// console.log(s.substring(2));
+
+// console.log(s.includes('c'));
+// console.log(s.indexOf('c'));
+// console.log(s.split(" ")[3]);
+
+// let separated = s.split(" ");
+// console.log(separated);
+
+// let joined = separated.join(" ");
+// console.log(joined);
+
+// let w = "word";
+// w = 'W' + w.slice(1);
+// // console.log(w);
+
+// let s = "I am a sentence";
+// console.log(s);
+// let separated = s.split(" ");
+
+// for(let i = 0; i<separated.length; i++){
+//     separated[i] = separated[i][0].toLocaleUpperCase() +  separated[i].slice(1);
+//     // console.log(separated[i]);
+// }
+
+// let joined = separated.join(" ");
+// console.log(joined);
+
+// let obj = {};
+// let obj = new Object();
+// function User(name, age) {
+//   this.name = name;
+//   this.age = age;
+// }
+
+class User {
+  constructor() {}
+}
+
+// let user1 = new User("Sachin", undefined);
+let user2 = new User();
+user2.profession = "cricketer";
+// console.log(user1["age"]);
+// console.log(user1?.age);
+
+console.log(user2.profession);
