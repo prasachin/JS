@@ -195,14 +195,75 @@
 //   this.age = age;
 // }
 
-class User {
-  constructor() {}
-}
+// class User {
+//   constructor() {}
+// }
 
-// let user1 = new User("Sachin", undefined);
-let user2 = new User();
-user2.profession = "cricketer";
-// console.log(user1["age"]);
-// console.log(user1?.age);
+// // let user1 = new User("Sachin", undefined);
+// let user2 = new User();
+// user2.profession = "cricketer";
+// // console.log(user1["age"]);
+// // console.log(user1?.age);
 
-console.log(user2.profession);
+// // console.log(user2.profession);
+// console.log(user2);
+
+// // delete user2.profession;
+// user2.profession = "not cricketer";
+// console.log(user2);
+
+// let obj = { name: "Sachin", age: 50, profession: "cricketer" };
+// console.log(Object.getOwnPropertyDescriptor(obj, "name"));
+// console.log(Object.keys(obj));
+
+// Object.defineProperty(obj, "password", {
+//   value: "12343",
+//   writable: false, // if false: it prevents us from changing the value of password, if true: it allows us to change the value of password
+//   enumerable: true, // if false: it prevents the password property from being listed in loops and Object.keys(), if true: it allows the password property to be listed in loops and Object.keys()
+//   configurable: false, // if false: it prevents us from deleting the password property or changing its attributes, if true: it allows us to delete the password property and change its attributes
+// });
+// console.log(obj.password);
+// // obj.password = "New password";
+// delete obj.password;
+// console.log(obj.password);
+// obj.password = "12345";
+// console.log(obj);
+// console.log(Object.keys(obj));
+// console.log(obj.password);
+
+// let obj = { name: "Sachin", age: 50, profession: "cricketer" };
+
+// console.log(obj);
+
+// // Object.freeze(obj); // it prevents us from changing the value of properties, adding new properties, or deleting existing properties. It makes the object immutable.
+
+// Object.seal(obj); // it prevents us from adding new properties or deleting existing properties, but it allows us to change the value of existing properties. It makes the object mutable but not extensible.
+
+// obj.name = "Rahul";
+// delete obj.age;
+// obj.password = "12345";
+
+// console.log(obj);
+
+// let car = {
+//   NoOfWheels: 4,
+//   Brand: "Mahindra",
+// };
+
+// //protoyping: it is a mechanism by which an object can inherit properties and methods from another object. The object that inherits is called the child object, and the object from which it inherits is called the parent object. In JavaScript, every object has a hidden property called __proto__ that points to its parent object. When we try to access a property or method on an object, JavaScript first looks for it on the object itself. If it doesn't find it there, it looks for it on the object's prototype (the parent object). This process continues up the prototype chain until it finds the property or method or reaches the end of the chain (null).
+// let thar = Object.create(car);
+// // thar.model = "Thar ROXX";
+// thar.Brand = "Toyota";
+
+// console.log(thar);
+// console.log(thar.Brand);
+
+// let user = {};
+// user.name = "name";
+// user.age = 50;
+// user.password = "12345";
+// console.log(user);
+// user = JSON.stringify(user);
+// user = JSON.parse(user);
+// console.log(user.name);
+
