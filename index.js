@@ -252,7 +252,7 @@
 
 // //protoyping: it is a mechanism by which an object can inherit properties and methods from another object. The object that inherits is called the child object, and the object from which it inherits is called the parent object. In JavaScript, every object has a hidden property called __proto__ that points to its parent object. When we try to access a property or method on an object, JavaScript first looks for it on the object itself. If it doesn't find it there, it looks for it on the object's prototype (the parent object). This process continues up the prototype chain until it finds the property or method or reaches the end of the chain (null).
 // let thar = Object.create(car);
-// // thar.model = "Thar ROXX";
+// thar.model = "Thar ROXX";
 // thar.Brand = "Toyota";
 
 // console.log(thar);
@@ -263,7 +263,72 @@
 // user.age = 50;
 // user.password = "12345";
 // console.log(user);
-// user = JSON.stringify(user);
+// user = JSON.stringify(user); serialization: it is the process of converting a JavaScript object into a string. This is useful when we want to store the object in a file or send it over a network. The JSON.stringify() method is used for serialization. It takes a JavaScript object and returns a JSON string representation of that object. The JSON.parse() method is used for deserialization. It takes a JSON string and returns a JavaScript object.
 // user = JSON.parse(user);
 // console.log(user.name);
 
+// let user = { name: "Sachin", age: undefined, profession: "cricketer" };
+// let user = {
+//   name: "Sachin",
+//   greet: function welcome() {
+//     console.log("Welcome to the world of JavaScript");
+//   },
+//   profession: "cricketer",
+// };
+// console.log(user);
+// user = JSON.stringify(user);
+
+// console.log(user);
+
+// user = JSON.parse(user);
+
+// console.log(user);
+
+// let car = {
+//   NoOfWheels: 4,
+//   Brand: "Mahindra",
+// };
+
+// let thar = Object.create(car);
+// thar.model = "Thar ROXX";
+
+// console.log(thar.Brand, thar.NoOfWheels, thar.model);
+// thar = JSON.stringify(thar);
+
+// console.log(thar);
+
+// thar = JSON.parse(thar);
+
+// console.log(thar.Brand, thar.NoOfWheels, thar.model);
+
+// let obj = {};
+
+// obj.self = obj;
+
+// obj = JSON.stringify(obj);
+
+// console.log(obj);
+
+// obj = JSON.parse(obj);
+
+// console.log(obj);
+
+
+// let el = document.getElementById("title");
+// console.log(el);
+
+
+// let el = document.getElementsByClassName("para");
+// console.log(el);
+
+// let el = document.getElementsByTagName("p");
+// console.log(el);
+
+// let el = document.querySelector(".para");
+// console.log(el);
+
+// let el1 = document.querySelector("#title");
+// console.log(el1);
+
+// let el1 = document.querySelectorAll(".para");
+// console.log(el1);
