@@ -313,10 +313,8 @@
 
 // console.log(obj);
 
-
 // let el = document.getElementById("title");
 // console.log(el);
-
 
 // let el = document.getElementsByClassName("para");
 // console.log(el);
@@ -332,3 +330,11 @@
 
 // let el1 = document.querySelectorAll(".para");
 // console.log(el1);
+
+// let btn = document.getElementById("btn");
+// // console.log(btn);
+
+// btn.addEventListener("click", function (e) {
+//     console.log(e);
+//   console.log("Button clicked");
+// }, true);

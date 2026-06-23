@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.toolbar {
+    padding: 10px;
+    background-color: rgb(240, 242, 244);
+    border-bottom: 1px solid #ccc;
+}
+
+.toolbar button{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.formula-bar {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#address {
+    width: 70px;
+    margin-right: 10px;
+}
+
+#formula {
+    flex: 1;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 50px auto;
+    grid-template-rows: 30px auto;
+    padding: 5px;
+}
+
+.top-row {
+    grid-column: 2;
+    display: flex;
+}
+.left-col{
+    grid-row: 2;
+}
+
+.cells {
+    grid-column: 2;
+    grid-row: 2;    
+    overflow: auto;
+}
+
+.cell {
+    width: 100px;
+    height: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 3px;
+}
+
+.row {
+    display: flex;
+}
