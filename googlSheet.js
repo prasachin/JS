@@ -29,18 +29,19 @@ Data Structure:
 
 let rows = 1000;
 let cols = 26;
-
+let sheetDB = [];
 function createSheetDB() {
   for (let i = 0; i < rows; i++) {
     let row = [];
     for (let j = 0; j < cols; j++) {
       row.push({
         value: "",
-        formuls: "",
+        formula: "",
         parents: [],
         children: [],
       });
     }
+    sheetDB.push(row);
   }
 }
 
@@ -66,8 +67,9 @@ function generateHeaders() {
 }
 
 generateHeaders();
-
+let selectedCell = null;
 let cellsContainer = document.querySelector(".cells");
+
 function generateCells() {
   for (let i = 0; i < rows; i++) {
     let rowDiv = document.createElement("div");
@@ -77,9 +79,100 @@ function generateCells() {
       cell.classList.add("cell");
       cell.contentEditable = true;
       rowDiv.appendChild(cell);
+      cell.setAttribute("rid", i);
+      cell.setAttribute("cid", j);
+      cell.addEventListener("click", function () {
+        selectedCell = cell;
+        let address = String.fromCharCode(j + 65) + (i + 1);
+        let addressBar = document.querySelector("#address");
+        addressBar.value = address;
+      });
     }
     cellsContainer.appendChild(rowDiv);
   }
 }
 
 generateCells();
+
+let boldBtn = document.querySelector("#bold");
+boldBtn.addEventListener("click", function () {
+  if (selectedCell) {
+    selectedCell.style.fontWeight =
+      selectedCell.style.fontWeight === "bold" ? "normal" : "bold";
+  }
+});
+
+let itallicBtn = document.querySelector("#italic");
+itallicBtn.addEventListener("click", function () {
+  if (selectedCell) {
+    selectedCell.style.fontStyle =
+      selectedCell.style.fontStyle === "italic" ? "normal" : "italic";
+  }
+});
+
+let underLine = document.querySelector("#underline");
+underLine.addEventListener("click", function () {
+  if (selectedCell) {
+    selectedCell.style.textDecoration =
+      selectedCell.style.textDecoration === "underline" ? "none" : "underline";
+  }
+});
+
+let formulaInput = document.querySelector("#formula");
+
+function getRIDCID(address) {
+  let rid = Number(address.slice(1)) - 1;
+  let cid = address.charCodeAt(0) - 65;
+  return { rid, cid };
+}
+// A1 + B1
+// [A1, +, B1]
+// [5, +, 5]
+// 5 + 5
+function evaluateFormula(formula) {
+  if (!formula) return;
+  let tokens = formula.split(" ");
+  for (let i = 0; i < tokens.length; i++) {
+    if (/^[A-Z][0-9]+$/.test(tokens[i])) {
+      let { rid, cid } = getRIDCID(tokens[i]);
+      let value = sheetDB[rid][cid].value;
+      tokens[i] = value;
+    }
+  }
+  let expression = tokens.join(" ");
+  try {
+    let result = eval(expression);
+    return result;
+  } catch (error) {
+    return "Error";
+  }
+}
+
+cellsContainer.addEventListener(
+  "blur",
+  function (e) {
+    let cell = e.target;
+    let rid = Number(cell.getAttribute("rid"));
+    let cid = Number(cell.getAttribute("cid"));
+    let value = cell.textContent;
+    sheetDB[rid][cid].value = value;
+  },
+  true,
+);
+
+function updateCellUI(rid, cid, value) {
+  let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
+  cell.textContent = value;
+}
+
+formulaInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    let formula = formulaInput.value;
+    let address = document.querySelector("#address").value;
+    if (!address) return;
+    let value = evaluateFormula(formula);
+    console.log(value);
+    let { rid, cid } = getRIDCID(address);
+    updateCellUI(rid, cid, value);
+  }
+});
