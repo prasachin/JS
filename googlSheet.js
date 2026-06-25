@@ -21,7 +21,7 @@ Data Structure:
  value, parents, children, formula
 {
     value:"",
-    formuls:"",
+    formula:"",
     parents:[],
     children:[]
 }
@@ -148,6 +148,28 @@ function evaluateFormula(formula) {
   }
 }
 
+function removeDependencies(rid, cid) {
+  let parents = sheetDB[rid][cid].parents;
+  parents.forEach(({ rid: pr, cid: pc }) => {
+    sheetDB[pr][pc].children = sheetDB[pr][pc].children.filter(
+      (child) => !(child.childRID === rid && child.childCID === cid),
+    );
+  });
+  sheetDB[rid][cid].parents = [];
+}
+
+function updateChildren(rid, cid) {
+  let children = sheetDB[rid][cid].children;
+  children.forEach((child) => {
+    let cellObj = sheetDB[child.childRID][child.childCID];
+    let formula = cellObj.formula;
+    let newValue = evaluateFormula(formula);
+    cellObj.value = newValue;
+    updateCellUI(child.childRID, child.childCID, newValue);
+    updateChildren(child.childRID, child.childCID);
+  });
+}
+
 cellsContainer.addEventListener(
   "blur",
   function (e) {
@@ -155,7 +177,12 @@ cellsContainer.addEventListener(
     let rid = Number(cell.getAttribute("rid"));
     let cid = Number(cell.getAttribute("cid"));
     let value = cell.textContent;
+    if (sheetDB[rid][cid].formula) {
+      removeDependencies(rid, cid);
+    }
     sheetDB[rid][cid].value = value;
+    sheetDB[rid][cid].formula = "";
+    updateChildren(rid, cid);
   },
   true,
 );
@@ -164,6 +191,24 @@ function updateCellUI(rid, cid, value) {
   let cell = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`);
   cell.textContent = value;
 }
+// A1 + B1
+// target: C1
+function addDependencies(formula, childRID, childCID) {
+  let tokens = formula.split(" ");
+  for (let i = 0; i < tokens.length; i++) {
+    if (/^[A-Z][0-9]+$/.test(tokens[i])) {
+      let { rid, cid } = getRIDCID(tokens[i]);
+      sheetDB[rid][cid].children.push({
+        childRID: childRID,
+        childCID: childCID,
+      });
+      sheetDB[childRID][childCID].parents.push({
+        rid: rid,
+        cid: cid,
+      });
+    }
+  }
+}
 
 formulaInput.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
@@ -171,8 +216,11 @@ formulaInput.addEventListener("keydown", function (e) {
     let address = document.querySelector("#address").value;
     if (!address) return;
     let value = evaluateFormula(formula);
-    console.log(value);
+    // console.log(value);
     let { rid, cid } = getRIDCID(address);
+    sheetDB[rid][cid].value = value;
+    sheetDB[rid][cid].formula = formula;
+    addDependencies(formula, rid, cid);
     updateCellUI(rid, cid, value);
   }
 });
