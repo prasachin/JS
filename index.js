@@ -338,3 +338,66 @@
 //     console.log(e);
 //   console.log("Button clicked");
 // }, true);
+
+// console.log("Start");
+
+// function X() {
+//   console.log("Hey I am an outer function, please invoke me.");
+// }
+
+// setTimeout(X, 5000);
+
+// function dummy() {
+//   let start = Date.now();
+//   while (Date.now() - start < 5000) {
+//     //
+//   }
+//   console.log("from dummy");
+// }
+
+// dummy();
+
+// console.log("end");
+
+// let users = GetUsers();
+
+// let orders = GetOrders(userId);
+
+// let amount = GetAmount(orders);
+
+// GetUsers(function X(userId) {
+//   GetOrders(userId, function Y(orders) {
+//     GetAmount(orders, function Z(amount) {
+//       console.log(users, orders, amount);
+//     });
+//   });
+// });
+
+// let users  = fetch("https://jsonplaceholder.typicode.com/users")
+
+// console.log(users);
+
+// console.log("End");
+// let users = GetUsers();
+
+// let orders = GetOrders(userId);
+
+// let amount = GetAmount(orders);
+
+// let promise = new Promise((resolve, reject) => {
+//   // resolve("Promise resolved successfully");
+//   reject("Promise rejected");
+// });
+
+// console.log(promise);
+
+// promise
+//   .then((res) => {
+//     console.log("Hello", res);
+//   })
+//   .catch((err) => {
+//     console.log("Error:", err);
+//   })
+//   .finally(() => {
+//     console.log("Promise is settled");
+//   });
