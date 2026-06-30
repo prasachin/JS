@@ -401,3 +401,88 @@
 //   .finally(() => {
 //     console.log("Promise is settled");
 //   });
+
+// let p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("Promise 1 rejected");
+//     // resolve("Promise 1 resolved");
+//   }, 4000);
+// });
+
+// let p2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("Promise 2 rejected");
+//     // resolve("Promise 2 resolved");
+//   }, 2000);
+// });
+
+// let p3 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject("Promise 3 rejected");
+//     // resolve("Promise 3 resolved");
+//   }, 3000);
+// });
+
+// Promise combinations.
+
+// 1. promise.all(): it takes an array of promises and returns a new promise that resolves when all the promises in the array have resolved. It will fail as soon as any of the passed promises gets rejected. The resolved value is an array of the resolved values of the input promises, in the same order as the input promises.
+
+// Promise.all([p1, p2, p3]).then((res) => {
+//   console.log(res);
+// });
+
+// Promise.allSettled([p1, p2, p3]).then((res) => {
+//   console.log(res);
+// });
+
+// Promise.race([p1, p2, p3]).then((res) => {
+//   console.log(res);
+// });
+
+// Promise.any([p1, p2, p3]).then((res) => {
+//   console.log(res);
+// });
+
+// function func() {
+//   return "Data";
+// }
+
+// async function func2() {
+//   setTimeout(() => {
+//     // return "Data";
+//     console.log("Data");
+//   }, 5000);
+// }
+
+let p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // reject("Promise 3 rejected");
+    resolve("Promise 3 resolved// 1");
+  }, 5000);
+});
+
+// let res1 = func();
+
+// let res2 = func2();
+
+// console.log(res1);
+// console.log(res2);
+
+// res2.then((res) => {
+//   console.log(res);
+// });
+
+async function GetData() {
+  //   func2().then((res) => {
+  //     console.log(res);
+  //   });
+  //   console.log(func2());
+  let data = await p3;
+  console.log(data);
+
+  console.log("Intermediator");
+}
+
+GetData();
+
+console.log("End");
