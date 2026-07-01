@@ -4,37 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript</title>
-    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 id="title">Javascript Module</h1>
+    <!-- <h1 id="title">Javascript Module</h1>
     <button id="btn">Click Me</button>
     <h1 id="title">Javascript</h1>
     <div>
       <p class="para">a</p>
       <p class="para">b</p>
-    </div>
-    <script src="index.js" defer></script>
+    </div> -->
+    <!-- <script src="index.js" defer></script> -->
 
     <!-- <!-/- toolbar -->
-    <!-- <div class="toolbar">
+    <div class="toolbar">
       <button id="bold">Bold</button>
       <button id="italic">Italic</button>
       <button id="underline">Underline</button>
-    </div> -->
+      <button id="ai">AI</button>
+      <span id="aiOutput"></span>
+    </div>
+
+    <!-- AI Modal -->
+    <div id="aiModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>AI-Assistant</h2>
+        <div class="instructions">
+          <h3>How to use:</h3>
+          <ol>
+            <li>
+              <strong>click and drag</strong> to select cells (they will be
+              highlighted)
+            </li>
+            <li>Write your instructions in the textarea below.</li>
+            <li>
+              Click on the <strong>Submit</strong> button to get the
+              AI-generated answers.
+            </li>
+          </ol>
+        </div>
+        <p><strong>Write Instructions for AI</strong></p>
+        <textarea
+          name=""
+          id="aiInstructions"
+          placeholder="calculate sum, avg etc..."
+        ></textarea>
+        <div id="selectedCellsInfo" class="info"></div>
+        <button id="Submit" class="btn-submit">Submit</button>
+      </div>
+    </div>
     <!-- address bar and formula bar -->
-    <!-- <div class="formula-bar">
+    <div class="formula-bar">
       <input type="text" id="address" disabled />
       <input type="text" id="formula" placeholder="Enter the formula..." />
-    </div> -->
+    </div>
     <!-- spread sheet container -->
-    <!-- <div class="grid-container">
+    <div class="grid-container">
       <div class="top-row"></div>
       <div class="left-col"></div>
       <div class="cells"></div>
-    </div> -->
+    </div>
 
-    <!-- <script src="googlSheet.js" defer></script> -->
+    <script src="googlSheet.js" defer></script>
   </body>
 </html>
 <!-- Document

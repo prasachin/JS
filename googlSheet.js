@@ -224,3 +224,23 @@ formulaInput.addEventListener("keydown", function (e) {
     updateCellUI(rid, cid, value);
   }
 });
+
+// AI.
+let aiMode = false;
+let aiBtn = document.querySelector("#ai");
+let aiModal = document.querySelector("#aiModal");
+let closeBtn = document.querySelector(".close");
+
+aiBtn.addEventListener("click", function () {
+  aiMode = !aiMode;
+  if (aiMode) {
+    aiModal.classList.add("open");
+  } else {
+    aiModal.classList.remove("open");
+  }
+});
+
+closeBtn.addEventListener("click", function () {
+  aiMode = false;
+  aiModal.classList.remove("open");
+});

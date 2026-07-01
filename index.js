@@ -472,17 +472,26 @@ let p3 = new Promise((resolve, reject) => {
 //   console.log(res);
 // });
 
-async function GetData() {
-  //   func2().then((res) => {
-  //     console.log(res);
-  //   });
-  //   console.log(func2());
-  let data = await p3;
-  console.log(data);
+// async function GetData() {
+//   //   func2().then((res) => {
+//   //     console.log(res);
+//   //   });
+//   //   console.log(func2());
+//   let data = await p3;
+//   console.log(data);
 
-  console.log("Intermediator");
-}
+//   console.log("Intermediator");
+// }
 
-GetData();
+// GetData();
 
-console.log("End");
+// console.log("End");
+// async function getdata() {
+//   let users = await fetch("https://dummyjson.com/users");
+//   let data = await users.json();
+//   console.log(data);
+// }
+
+// users.then((res) => res.json()).then(console.log);
+
+// getdata();

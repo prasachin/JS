@@ -10,7 +10,7 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-.toolbar button{
+.toolbar button {
     margin-right: 10px;
     cursor: pointer;
 }
@@ -41,13 +41,14 @@ body {
     grid-column: 2;
     display: flex;
 }
-.left-col{
+
+.left-col {
     grid-row: 2;
 }
 
 .cells {
     grid-column: 2;
-    grid-row: 2;    
+    grid-row: 2;
     overflow: auto;
 }
 
@@ -60,4 +61,119 @@ body {
 
 .row {
     display: flex;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    position: fixed;
+    pointer-events: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: move;
+}
+
+.modal-content h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    user-select: none;
+}
+
+.close {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(96, 30, 30);
+    margin-top: -18px;
+    margin-right: -10px;
+}
+
+.close:hover {
+    color: red;
+}
+
+.instructions {
+    background: #e6e6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border-left: green 5px solid;
+}
+
+.instructions h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.instructions ol {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 13px;
+}
+
+.instructions li {
+    margin-bottom: 3px;
+}
+
+.instructions strong {
+    color: rgb(255, 102, 0);
+}
+
+.modal-content p {
+    font-size: 14px;
+    margin: 10px 0;
+    color: gray;
+}
+
+#aiInstructions {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(28, 28, 75);
+    color: white;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.btn-submit:hover {
+    background-color: rgb(16, 33, 109);
+}
+
+.info {
+    font-size: 13px;
+    color: green;
+    margin: 10px 0;
 }
